@@ -1,0 +1,41 @@
+/*
+ * Complete the 'insertionSort1' function below.
+ *
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER_ARRAY arr
+ */
+//SOLUTION
+void insertionSort1(int n, vector<int> &arr) {
+         int cpy=arr[n-1];
+         vector<int> cpyarr;
+         cpyarr=arr;
+         for(int j=n-1;j>=0;j--)
+         {
+             if(arr[j-1]>arr[n-1])
+             {
+                 cpyarr=arr;
+                 cpyarr.pop_back();
+                int x=cpyarr[j-1];
+                 cpyarr.insert (cpyarr.begin()+(j-1),x);
+               
+                 for(int i=0;i<n;i++)
+                 {
+                     cout<<cpyarr[i]<<" ";
+                 }
+                 cout<<endl;
+             }
+             else if(arr[j-1]<arr[n-1])
+             {
+                 arr.pop_back();
+                 arr.insert(arr.begin()+(j),cpy);
+                 break;
+             }
+         }
+         for(int i=0;i<n;i++)
+          {
+              cout<<arr[i]<<" ";
+          }
+             cout<<endl;
+          
+}
