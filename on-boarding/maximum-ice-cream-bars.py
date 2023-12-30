@@ -21,4 +21,3 @@ class Solution:
 
 
         return count
-7
