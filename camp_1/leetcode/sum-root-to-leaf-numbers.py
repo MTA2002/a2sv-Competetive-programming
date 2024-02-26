@@ -6,20 +6,25 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        ans = []
-        sum_ = []
+        global num 
+        global ans 
+        num = 0
+        ans = 0
 
-        def inorder(cur):                
+        def inorder(cur): 
+            global num 
+            global ans  
+
             if cur:
-                ans.append(str(cur.val))
+                num = 10 * num + cur.val
                 inorder(cur.left)
                 inorder(cur.right)
                 if not cur.left and not cur.right:
-                    sum_.append(int("".join(ans)))
-                ans.pop()
-
-
+                    ans += num
+                
+                num -= cur.val
+                num //= 10
 
         inorder(root)
 
-        return sum(sum_)
+        return ans
