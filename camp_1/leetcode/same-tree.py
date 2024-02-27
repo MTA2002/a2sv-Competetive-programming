@@ -6,19 +6,18 @@
 #         self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        ans1 = []
-        ans2 = []
+        
+        if p and q:
+            return p.val == q.val and self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+            
+        if (p and not q) or (not p and q):
+            return False
 
-        def inorder(current:Optional[TreeNode],arr:List[int],isLeft:bool):
-            if current:
-                inorder(current.left,arr,True)
-                arr.append((current.val,isLeft))
-                inorder(current.right,arr,False)
+        if not p and not q:
+            return True
 
-        inorder(p,ans1,False)
-        inorder(q,ans2,False)
 
-        return ans1 == ans2
+
 
 
 
