@@ -6,23 +6,18 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        ans1 = []
-
-        def inorder(current:Optional[TreeNode],isLeft:bool):
-            if current:
-                inorder(current.left,True)
-                ans1.append((current.val,isLeft))
-                inorder(current.right,False)
         
-        ans2 = []
-        def inorder2(current:Optional[TreeNode],isRight:bool):
-            if current:
-                inorder2(current.right,True)
-                ans2.append((current.val,isRight))
-                inorder2(current.left,False)
+        def isSym(current1:Optional[TreeNode],current2:Optional[TreeNode]):
+            if current1 and current2:
 
-        inorder(root.left,True)
-        inorder2(root.right,True)
+                return current1.val == current2.val and isSym(current1.left,current2.right) and isSym(current1.right,current2.left)
+            
+            if (current1 and not current2) or (not current1 and current2):
+                return False
 
-        return ans1 == ans2
+            if not current1 and not current2:
+                return True
+
+
+        return isSym(root.left,root.right)
 
