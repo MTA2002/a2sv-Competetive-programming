@@ -22,8 +22,7 @@ class Solution:
             if key % 2 == 0:
                 res.append(value)
             else:
-                value.reverse()
-                res.append(value)
+                res.append(value[::-1])
 
         return res
         
