@@ -17,10 +17,7 @@ class Solution:
                 inorder(cur.right,row+1,col+1)
 
         inorder(root,0,0)
-
-        print(ans)
-
-
+        
         res = []
 
         for key,value in sorted(ans.items()):
